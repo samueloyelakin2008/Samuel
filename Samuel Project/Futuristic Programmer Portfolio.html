@@ -747,44 +747,89 @@ document.addEventListener("DOMContentLoaded", typeWriter);
         </div>
     </div>
 </section>
+	    
 <section>
   <style >
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Align items at the start */
-    gap: 25px; /* Space between logos */
+
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    background:white; /* Background color */
+    position: relative;
+    height:100%; /* Adjust height as needed */
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 15s linear infinite; /* Adjust duration for speed */
 }
 
 .logo-item {
-    text-align: center; /* Center text under logos */
+    display: inline-block;
+    margin: 0 30px; /* Space between logos */
+    text-align: center;
 }
 
-.logo {
-    width: 200px; /* Set a fixed width for logos */
-    height:100%; /* Maintain aspect ratio */
+.logo-item img {
+    max-height:100px; /* Set max height for logos */
+    display: block;
+    margin: 0 auto;
 }
 
-.logo-text {
-    margin-top:20px; /* Space between logo and text */
-    font-size:30px; /* Font size for the text */
-    color: #333; /* Text color */
-    font-weight:bolder;
+.logo-item p {
+    margin: 5px 0 0; /* Margin for text */
+    font-size: 15px; /* Font size for text */
 }
+
+/* Keyframes for marquee animation */
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.logo-items img {
+  max-height:100px; /* Set max height for logos */
+    display: block;
+    margin: 0 auto;
+    width:100%;
+}
+.logo-items p{ 
+    margin: 5px 0 0; /* Margin for text */
+    font-size: 15px; /* Font size for text */
+}
+.logo-items{
+    display: inline-block;
+    margin: 0 30px; /* Space between logos */
+    text-align: center;
+}
+
   </style>
-  <h3 class="mbr-section-title align-center mb-5 mbr-fonts-style display-2" style="font-size:40px; font-weight:bolder;">
-     <strong style="color:lightblue;" >Collaboration With:</strong>
-    </h3>
-    <div class="logo-container">
-        <div class="logo-item">
-           <a href="https://solarinstech.com/"><img src="./Futuristic Programmer Portfolio_files/solarinstechs.png" alt="Logo 1" class="logo"></a>
-            <p class="logo-text"></p>
+  <div class="marquee">
+    <div class="marquee-content">
+        <div class="logo-items">
+           <a href="https://solarinstechs.com"><img src="./Futuristic Programmer Portfolio_files/solarinstechs.png" alt="Logo 1"></a>
+            <p>Innovations Beyond Now.</p>
         </div>
         <div class="logo-item">
-            <a href="https://jekacode.africa/"><img src="./Futuristic Programmer Portfolio_files/Jekacode.jpeg" alt="Logo 2" class="class"></a>
-            <h3 class="logo-text">Jekacode Africa</h3>
+           <a href="https://www.jekacode.africa"><img src="./Futuristic Programmer Portfolio_files/Jekacode.jpeg" alt="Logo 2"></a>
+            <p>Building Tech Leaders Of Tomoorrow</p>
+        </div>
+        <div class="logo-item">
+            <img src="Samuel.jpg" alt="Logo 3">
+            <p>The Future Is Now </p>
         </div>
     </div>
+</div>
+<script>
+  const marqueeContent = document.querySelector('.marquee-content');
+
+marqueeContent.addEventListener('mouseover', () => {
+    marqueeContent.style.animationPlayState = 'paused';
+});
+
+marqueeContent.addEventListener('mouseout', () => {
+    marqueeContent.style.animationPlayState = 'running';
+});
+</script>
 </section>
 <section data-bs-version="5.1" class="features03 cid-uivkkr6UmE" id="events-1-uivkkr6UmE">
   
