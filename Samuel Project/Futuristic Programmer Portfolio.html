@@ -178,16 +178,17 @@
     <div class="row">
       <div class="content-wrap col-12 col-md-12">
    <style>
-     #typewriter {
+     .typewriter {
     font-family: 'Courier New', Courier, monospace;
     white-space: pre; /* Preserve whitespace */
     overflow: hidden; /* Hide the overflowing text */
-    border-right: .orange; /* Cursor */
+    border-right: orange; /* Cursor */
     animation: blink-caret .75s step-end infinite;
     color:#ffc091;
-    font-size:44px;
-    text-align: center;
+    font-size:37px;
+    text-align:left;
     font-weight:bolder;
+    letter-spacing:none;
 }
 
 @keyframes blink-caret {
@@ -195,36 +196,47 @@
     50% { border-color: orange; }
 }
    </style>
-   <div id="typewriter">
-   </div>
+  <div class="typewriter">
+   <div id="text"></div>
+  </div>
         <script>
-          const lines = [
-    "HELLO!!!",
-    "I AM SAMUEL",
-    "OYELAKIN.",
+             const textElement = document.getElementById("text");
+          const texts = [
+    "HELLO!!! I AM,",
+    "SAMUEL OYELAKIN ",
+    "WELCOME TO",
+    "SamuelsAD Techs",
+    "The Future Is Now.",
+
 ];
 
-let lineIndex = 0;
+let index = 0;
 let charIndex = 0;
-const speed = 100; // Typing speed in milliseconds
-const typewriterElement = document.getElementById('typewriter');
+let isDeleting = false;
 
-function typeWriter() {
-    if (lineIndex < lines.length) {
-        if (charIndex < lines[lineIndex].length) {
-            typewriterElement.innerHTML += lines[lineIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, speed);
-        } else {
-            typewriterElement.innerHTML += '<br/>';
-            charIndex = 0;
-            lineIndex++;
-            setTimeout(typeWriter, speed);
-        }
+function type() {
+    const currentText = texts[index];
+    if (isDeleting) {
+        charIndex--;
+    } else {
+        charIndex++;
+    }
+
+    textElement.textContent = currentText.substring(0, charIndex);
+
+    if (!isDeleting && charIndex === currentText.length) {
+        isDeleting = true;
+        setTimeout(type, 1000); // Pause before deleting
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        index = (index + 1) % texts.length; // Move to the next text
+        setTimeout(type, 500); // Pause before typing next text
+    } else {
+        setTimeout(type, isDeleting ? 100 : 200); // Speed of typing and deleting
     }
 }
 
-document.addEventListener("DOMContentLoaded", typeWriter);
+type();
         </script>
         <p class="mbr-fonts-style mbr-text mbr-white mb-4 display-7">A student in Senior Secondary School class, still in training having a good experience in web development and design as a frontend developer, works on HTML, CSS and Javascript </p>
         <div class="mbr-section-btn">
